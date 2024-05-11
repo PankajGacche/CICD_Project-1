@@ -15,7 +15,7 @@ This project provides a simple CI/CD pipeline to automatically deploy changes fr
 1. Clone this repository:
 
     ```bash
-    git clone https://github.com/Sukhilnair/CI_CD_project.git
+    git clone https://github.com/PankajGacche/CICD_Project-1.git
     ```
 
 2. Configure Nginx to serve your web application.
