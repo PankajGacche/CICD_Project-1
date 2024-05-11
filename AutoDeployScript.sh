@@ -2,8 +2,8 @@
 
 date=$(date '+%Y-%m-%d %H:%M:%S')
 
-rootfolder="$HOME/CI_CD_project"
-projectfolder="$HOME/CI_CD_project/project"
+rootfolder="/home/ubuntu/CICD_Project-1"
+projectfolder="/home/ubuntu/CICD_Project-1/project/latest_version"
 
 if [ ! -d "$projectfolder" ]; then
     mkdir -p "$projectfolder"
@@ -16,16 +16,16 @@ if ! [ -x "$(command -v jq)" ]; then
   sudo apt-get install jq -y
 fi
 
-commit_url=$(jq -r '.git_url' "$projectfolder/config.json")
-commit_branch=$(jq -r '.git_branch' "$projectfolder/config.json")
+commit_url=$(jq -r '.git_url' "$rootfolder/config.json")
+commit_branch=$(jq -r '.git_branch' "$rootfolder/config.json")
 
-git clone "$commit_url" "$rootfolder/project/latest_version"
-cd "$rootfolder/project/latest_version"
+git clone "$commit_url" "$projectfolder"
+cd "$projectfolder"
 git checkout "$commit_branch"
 
-cp "$rootfolder/project/latest_version/index.html" /var/www/html/
+cp "$projectfolder/index.html" /var/www/html/
 
-systemctl restart nginx 
+systemctl restart nginx
 
-mv "$rootfolder/project/latest_version" "$rootfolder/version_$version"
+mv "$projectfolder" "$rootfolder/version_$version"
 
