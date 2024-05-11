@@ -32,6 +32,7 @@ This project provides a simple CI/CD pipeline to automatically deploy changes fr
     ```bash
     crontab -e
     * * * * * python3 <project_folder>/GitAutoDeployer.py
+    * * * * * python3 /home/ubuntu/CICD_Project-1/GitAutoDeployer.py
     ```
 
 ## Usage
@@ -48,4 +49,6 @@ This project provides a simple CI/CD pipeline to automatically deploy changes fr
 - `AutoDeployScript.sh`: Bash script to clone the latest version of the project, deploy it, and restart Nginx.
 - `config.json`: Configuration file specifying Git repository URL and branch.
 - `deployment.log`: Log file recording deployment history.
+
+
 
